@@ -122,3 +122,80 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 
 ---
 # Docker can be used continuous integration
+
+---
+# How to use Docker with WordPress
+
+---
+
+```dockerfile
+FROM php:7.2.18-apache as builder-base
+RUN apt-get update                                      && \
+    apt-get install -y git zip mysql-client             && \
+    docker-php-ext-install mysqli                       && \
+    a2enmod rewrite                                     && \
+    rm -rf /var/lib/apt/lists/*
+ENV APACHE_DOCUMENT_ROOT /var/www/html/
+ADD vhost.conf /etc/apache2/sites-available/000-default.conf
+
+RUN curl -s https://getcomposer.org/installer \
+    | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY . /var/www/html/
+```
+
+---
+
+```yaml
+version: '3.7'
+
+networks:
+  wordpress:
+
+volumes:
+  db-data:
+
+```
+---
+```yaml
+services:
+
+  apache2:
+    build:
+      context: .
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - wordpress
+```
+
+---
+```yaml
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - wordpress
+    volumes:
+      - db-data:/var/lib/mysql
+```
+
+---
+## Build the Docker images and containers
+
+```bash
+$ docker-compose up -d --build
+```
+---
+## Install WordPress
+
+```bash
+$ docker-compose exec apache2 composer install
+```
