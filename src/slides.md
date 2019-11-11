@@ -127,7 +127,14 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 # How to use Docker with WordPress
 
 ---
-
+## Docker Machine (Optional)
+```
+$ docker-machine create wordpress-install
+$ docker-machine env wordpress-install
+$ eval $(docker-machine env wordpress-install)
+```
+---
+## Dockerfile
 ```dockerfile
 FROM php:7.2.18-apache as builder-base
 RUN apt-get update                                      && \
@@ -145,21 +152,49 @@ COPY . /var/www/html/
 ```
 
 ---
-
+## Docker compose - Structure
 ```yaml
-version: '3.7'
+version:
 
 networks:
-  wordpress:
 
 volumes:
-  db-data:
 
-```
----
-```yaml
 services:
 
+```
+
+---
+## Docker compose - Version
+```yaml
+version: '3.7'
+```
+---
+## Docker compose - Network
+```yaml
+networks: 
+    wordpress:
+```
+---
+## Docker compose - Volumes
+```yaml
+volumes: 
+    db-data:
+```
+
+---
+## Docker compose - Services
+```yaml
+services: 
+
+    apache2:
+    
+    mysql:
+```
+
+---
+## Docker compose - PHP Apache
+```yaml
   apache2:
     build:
       context: .
@@ -175,6 +210,7 @@ services:
 ```
 
 ---
+## Docker compose - MySQL
 ```yaml
   mysql:
     image: mysql:5.7
@@ -195,7 +231,18 @@ $ docker-compose up -d --build
 ```
 ---
 ## Install WordPress
-
 ```bash
 $ docker-compose exec apache2 composer install
+```
+
+---
+## Create the wp-config file
+
+```bash
+$ docker-compose exec apache2 bash
+$ ./vendor/bin/wp config create                     \
+    --allow-root --dbname=${MYSQL_DATABASE}         \
+    --dbuser=root --dbpass=${MYSQL_ROOT_PASSWORD}   \
+    --dbhost=mysql
+$ exit
 ```
