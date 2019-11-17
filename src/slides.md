@@ -7,7 +7,7 @@ size: 16:9
 footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
 ---
 
-# Docker For WordPress Sites
+# Docker For WordPress Developers
 
 
 ---
@@ -57,7 +57,7 @@ Communication layer
 ---
 # Docker Engine
 
-The backend of Docker which handles all the Docker objects (Networks/containers/Images/Volumes/etc)
+The backend of Docker which handles all the Docker objects (networks/containers/images/volumes/etc)
 
 ---
 ### A Docker container is built from a Docker image
@@ -89,7 +89,7 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 
 ---
 
-# What is the difference between VM's and Containers
+# What is the difference between virtual machines and containers
 
 ---
 ![bg width:55%](../src/assets/images/containers_virtual_machines.jpg)
@@ -103,15 +103,15 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 
 ---
 ## Containerization is like a room
-![bg width:80% right:50%](../src/assets/images/room.jpg)
+![bg width:80% right:40%](../src/assets/images/room.jpg)
 
 ---
 # Different levels of abstraction
 
 ---
 # Virtualization
-- Custom Environment
-- Allocated Resources
+- Custom environment
+- Allocated resources
 - Ecosystem
 
 ---
@@ -152,7 +152,7 @@ COPY . /var/www/html/
 ```
 
 ---
-## Docker compose - Structure
+## Docker compose - structure
 ```yaml
 version:
 
