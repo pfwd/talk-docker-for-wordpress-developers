@@ -23,6 +23,17 @@ footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
 # What | Why/When | How
 
 ---
+
+# Peter Fisher
+- Freelance Full Stack Web Developer
+- Host of the How To Code Well
+  - Podcast howtocodewell.fm
+  - YouTube channel youtube.com/howtocodewell
+  - Twitch live coders team twitch.tv/howtocodewell
+  - Tutorials and courses howtotcodewell.net
+
+
+---
 # What is Docker?
 
 ---
@@ -285,7 +296,22 @@ $ docker-compose up -d --build
 ```bash
 $ docker-compose exec apache2 composer install
 ```
-
+---
+## Composer
+```bash]
+  "require":{
+    "php": "<=7.3",
+    "wordpress": "5.2.4",
+    "fancyguy/webroot-installer": "1.1.0",
+    "wpackagist-plugin/akismet": "4.0",
+    "wp-cli/wp-cli-bundle": "*",
+    "wpackagist-theme/twentynineteen": "^1.4"
+  },
+  "extra":{
+    "webroot-dir": "wp",
+    "webroot-package": "wordpress"
+  }
+```
 ---
 ## Create the wp-config file
 
