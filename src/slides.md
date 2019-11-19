@@ -82,7 +82,7 @@ Communication layer
 ---
 # Docker Engine
 
-The backend of Docker which handles all the Docker objects (Networks/containers/Images/Volumes/etc)
+The backend of Docker which handles all the Docker objects (networks/containers/images/volumes/etc)
 
 ---
 # How is a container born
