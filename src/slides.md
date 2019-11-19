@@ -30,6 +30,7 @@ footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
   - Podcast howtocodewell.fm
   - YouTube channel youtube.com/howtocodewell
   - Twitch live coders team twitch.tv/howtocodewell
+  - Discord server howtotcodewell.net/discord
   - Tutorials and courses howtotcodewell.net
 
 
