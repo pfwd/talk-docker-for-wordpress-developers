@@ -7,7 +7,7 @@ size: 16:9
 footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
 ---
 
-# Docker For WordPress Sites
+# Docker For WordPress Developers
 
 
 ---
@@ -37,6 +37,31 @@ footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
 - Each container has a single responsibility
 - Each container can be duplicated
 ---
+
+# What does this mean for WordPress?
+
+---
+
+### The components of WordPress can be split into multiple containers
+
+---
+
+- Database
+- Webserver
+- PHP
+- Logging
+- Cron jobs
+- Misc
+
+---
+# Each component can be
+- Scaled
+- Replicated
+- Duplicated
+- Monitored
+
+---
+
 # Docker has 3 parts
 
 1) The client
@@ -60,11 +85,16 @@ Communication layer
 The backend of Docker which handles all the Docker objects (Networks/containers/Images/Volumes/etc)
 
 ---
-### A Docker container is built from a Docker image
+# How is a container born
 
 ![bg right:50% width:80%](../src/assets/images/contains_eggs.jpg)
 
 ---
+
+### A Docker container is built from a Docker image
+
+---
+
 ### A Docker image is made from many cached intermediate images
 
 ![bg right:50% width:80%](../src/assets/images/caching.jpg)
@@ -77,19 +107,23 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 ---
 ## Baking Docker containers is like baking cookies
 
-![bg right:50% width:75%](../src/assets/images/baking.jpg)
-
 ---
-# A Docker Image is the baked ingredients
-![bg right:50% width:75%](../src/assets/images/cookies.jpg)
 
----
-# A Dockerfile is the recipe
+### A Dockerfile is the recipe
 ![bg right:50% width:75%](../src/assets/images/recipe.jpg)
 
 ---
+### Building a Docker Image is like putting the cookies in the oven
+![bg right:50% width:55%](../src/assets/images/oven.png)
 
-# What is the difference between VM's and Containers
+---
+
+### Docker Containers are the chewy chocolatey goodness
+![bg right:50% width:55%](../src/assets/images/cookies.jpg)
+
+---
+
+# What is the difference between VM's and Containers?
 
 ---
 ![bg width:55%](../src/assets/images/containers_virtual_machines.jpg)
@@ -103,7 +137,7 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 
 ---
 ## Containerization is like a room
-![bg width:80% right:50%](../src/assets/images/room.jpg)
+![bg width:50% right:45%](../src/assets/images/room.jpg)
 
 ---
 # Different levels of abstraction
@@ -121,14 +155,31 @@ The backend of Docker which handles all the Docker objects (Networks/containers/
 - Single purpose
 
 ---
-# Docker can be used continuous integration
+# Docker can be used continuous integration / delivery
 
+---
+
+## Docker Images can be tagged to match your deployment workflow
+```bash
+$ docker build -t company/project:latest -t company/project:1.2.3 .
+$ docker pull company/project:latest
+$ docker run company/project:1.2.3
+```
 ---
 # How to use Docker with WordPress
 
 ---
+### https://github.com/pfwd/wordpress-install
+
+---
+# We will need
+- Docker
+- Docker compose
+- Docker machine (optional)
+
+---
 ## Docker Machine (Optional)
-```
+```bash
 $ docker-machine create wordpress-install
 $ docker-machine env wordpress-install
 $ eval $(docker-machine env wordpress-install)
@@ -246,3 +297,24 @@ $ ./vendor/bin/wp config create                     \
     --dbhost=mysql
 $ exit
 ```
+
+---
+# Recap time
+---
+# MySQL is in a container
+
+---
+# PHP / Apache is in a container
+
+---
+# Docker compose was used to inject configuration into the containers
+
+---
+# MySQL and Apache/PHP are networked together
+
+---
+# A Docker volume was created for persistent storage
+
+---
+## Thank you!
+Any questions?
