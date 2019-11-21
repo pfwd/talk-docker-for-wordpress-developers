@@ -20,7 +20,7 @@ footer: "Peter Fisher BSc MBCS howtocodewell.net @pfwd @howToCodeWell"
 
 ---
 
-# What | Why/When | How
+# What | Why | How | When
 
 ---
 
@@ -341,6 +341,21 @@ $ exit
 
 ---
 # A Docker volume was created for persistent storage
+
+---
+# When should you use Docker?
+
+---
+# Just because you can do a thing, doesn't mean you should/need to do a thing
+
+---
+# I Dockerize most of my projects even if Docker isn't used in production
+
+---
+# But Docker is
+- Complicated
+- A steep learning curve
+- Fragile
 
 ---
 ## Thank you!
